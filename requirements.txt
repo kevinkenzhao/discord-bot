@@ -1,0 +1,9 @@
+discord
+os
+requests
+json
+time
+re
+bs4
+requests_html
+asyncio
