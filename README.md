@@ -8,11 +8,19 @@ The script has been verified as working under Python 3.7.9. However, I suspect m
 
 ## URL Scanning
 
-Our bot gathers, parses, and presents the verdict and other descriptors about the URL(s) in question from three website scanning services: VirusTotal, Sucuri SiteCheck, and urlscan.io. We accomplish this by submitting standard POST requests to an API endpoint and parsing the returned json object or through web scraping. Because the Sucuri SiteCheck website is dynamic (i.e. the Javascript within must be executed to produce the desired HTML data), the code launches an instance of Chromium in the background for headless rendering. Unfortunately this approach can be resource-intensive if the host instance has limited resources (eg. Micro instance on AWS) and/or URLs are submitted in rapid succession.
+Our bot gathers, parses, and presents the verdict and other descriptors about the URL(s) in question from three website scanning services: VirusTotal, Sucuri SiteCheck, and urlscan.io. We accomplish this by submitting standard POST requests to an API endpoint and parsing the returned json object or through web scraping. Because the Sucuri SiteCheck website is dynamic (i.e. the Javascript within must be executed to produce the desired HTML data), the code launches an instance of Chromium in the background for headless rendering. Unfortunately this approach can be resource-intensive if the host instance has limited computing or network resources (eg. Micro instance on AWS) and URLs are submitted in rapid succession.
 
 ### Considerations for VirusTotal Scanning
 ----
-Because the VirusTotal public (ie. free) API imposes a limit of four requests/minute, we design a scheduling mechanism that is configured to asynchronously process up to two URL scan requests and synchronously sleep/resume when the program detects that all four requests have been temporarily depleted. We limit the Semaphore value to 2 to ensure that results are returned to the Discord chat in a timely manner. Without a Semaphore, it is possible that provided a slew of 10 URL scan requests, the program would return the results of the first sometime after five minutes. 
+Because the VirusTotal public (ie. free) API imposes a limit of four requests/minute, we design a scheduling mechanism that is configured to asynchronously process up to two URL scan requests and synchronously sleep/resume when the program detects that all four requests have been temporarily depleted. We limit the Semaphore value to 2 to ensure that results are returned to the Discord chat in a timely manner. Without a Semaphore, it is possible that provided a slew of 10 URL scan requests, the program would return the results of the first sometime after five minutes.
+
+
+### Warning: Sucuri SiteCheck Usage
+
+Using the Sucuri SiteCheck (sitecheck.sucuri.net) feature in the manner described above may constitute a violation of Sucuri's Terms of Service:
+```
+You shall not attempt or engage in potentially harmful acts that are directed against the Sites or Service including, without limitation, the following...using manual or automated software, devices, scripts, robots, or other means or processes to access, “scrape,” “crawl,” or “spider” any pages contained in the Sites"
+```
 
 ## Random Number Generation
 
