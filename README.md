@@ -4,7 +4,7 @@ The Discord bot was birthed from the desire for addressing occasional, miscellan
 
 ## Prerequisites
 
-The script has been verified to run under Python 3.7.9 without issue. However, I suspect most versions of Python 3 will work without issue.
+The script has been verified as working under Python 3.7.9. However, I suspect most versions of Python 3 will work without issue. If you have downloaded a version of Python >=3.4 via python.org, then pip is already installed. Otherwise, you will need to install pip separately. Finally, run "python -m pip install -r Path\to\requirements.txt," where "python" is an environmental variable pointing to the Python executable (eg. C:\Python37\python.exe)--you may need to restart your computer after newly installing Python or creating the variable in order for changes to take effect.
 
 
 ## URL Scanning
