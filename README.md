@@ -2,6 +2,19 @@
 
 The Discord bot was birthed from the desire for addressing occasional, miscellaneous functions in a private Discord server. What began as a URL checker was quickly augmented to provide inspirational quotes and a random number generator.
 
+## Bot Avatar
+
+The script attempts to search for and upload an avatar to Discord during execution. By default, the script will attempt to look for "Magnify.png" in the current directory, but this can be tailored as needed.
+```
+try:
+	with open('Magnify.png', 'rb') as fp:
+		pfp = fp.read()
+	await client.user.edit(avatar=pfp)
+except:
+	pass
+```
+The recommended icon resolution is 128 pixels * 128 pixels, but Magnify.png (513 pixels * 512 pixels) can be uploaded without issue.
+
 ## Prerequisites
 
 The script has been verified as working under Python 3.7.9. However, I suspect most versions of Python 3 will work without issue. If you have downloaded a version of Python >=3.4 via python.org, then pip is already installed. Otherwise, you will need to install pip separately. Next, download the requirements.txt file provided in this repository. Finally, run "python -m pip install -r Path\to\requirements.txt," where "python" is an environmental variable pointing to the Python executable (eg. C:\Python37\python.exe)--you may need to restart your computer after newly installing Python or creating the variable in order for changes to take effect.
