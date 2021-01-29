@@ -1,6 +1,6 @@
 # discord-bot
 
-The Discord bot was birthed from the desire for addressing occasional, miscellaneous functions in a private Discord server. What began as a URL checker was quickly augmented to provide inspirational quotes and a random number generator.
+The Discord bot was birthed from the desire for addressing occasional, miscellaneous functions in a private Discord server. What began as a URL checker was quickly augmented to provide inspirational quotes and a random number generator. The goal of this exercise is to grapple with API querying/response(s), dynamic webpage scraping and parsing, and scheduling in an asynchronous programming scenario.
 
 ## Bot Avatar
 
@@ -32,8 +32,12 @@ Because the VirusTotal public (ie. free) API imposes a limit of four requests/mi
 
 Using the Sucuri SiteCheck (sitecheck.sucuri.net) feature in the manner described above may constitute a violation of Sucuri's Terms of Service:
 ```
-You shall not attempt or engage in potentially harmful acts that are directed against the Sites or Service including, without limitation, the following...using manual or automated software, devices, scripts, robots, or other means or processes to access, “scrape,” “crawl,” or “spider” any pages contained in the Sites"
+You shall not attempt or engage in potentially harmful acts that are directed against the Sites or Service including, without limitation, the following...using manual or automated software, devices, scripts, robots, or other means or processes to access, “scrape,” “crawl,” or “spider” any pages contained in the Sites
 ```
+
+## Inspirational Quote Generation
+
+Inspirational quotes are queried from the free https://zenquotes.io/api/random endpoint. The returned json response is parsed for "quote" and "author" fields, which are both returned to the Discord chat.
 
 ## Random Number Generation
 
