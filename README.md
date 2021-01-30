@@ -21,6 +21,11 @@ The script has been verified as working under Python 3.7.9. However, I suspect m
 
 ## URL Scanning
 
+Our bot considers any string that starts with:
+* www.
+* http
+or ends with a TLD that does not contain any digits (eg. sampledomain.123) as a valid URL.
+
 Our bot gathers, parses, and presents the verdict and other descriptors about the URL(s) in question from three website scanning services: VirusTotal, Sucuri SiteCheck, and urlscan.io. We accomplish this by submitting standard POST requests to an API endpoint and parsing the returned json object or through web scraping. Because the Sucuri SiteCheck website is dynamic (i.e. the Javascript within must be executed to produce the desired HTML data), the code launches an instance of Chromium in the background for headless rendering. Unfortunately this approach can be resource-intensive if the host instance has limited computing or network resources (eg. Micro instance on AWS) and URLs are submitted in rapid succession.
 
 ### Considerations for VirusTotal Scanning
