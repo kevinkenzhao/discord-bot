@@ -2,6 +2,8 @@
 
 The Discord bot was birthed from the desire for addressing occasional, miscellaneous functions in a private Discord server. What began as a URL checker was quickly augmented to provide inspirational quotes and a random number generator. The goal of this exercise is to grapple with API querying/response(s), dynamic webpage scraping and parsing, and scheduling in an asynchronous programming scenario.
 
+By calling ```client.run('api_key')``` in the last line of the script, we have instructed the bot to run an [indefinite event loop until the logout() coroutine is called](https://discordpy.readthedocs.io/en/latest/api.html#discord.Client.run).
+
 ## Bot Avatar
 
 The script attempts to search for and upload an avatar to Discord during execution. By default, the script will attempt to look for "Magnify.png" in the current directory, but this can be tailored as needed.
