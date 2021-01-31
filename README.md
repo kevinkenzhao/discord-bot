@@ -37,7 +37,7 @@ Our bot gathers, parses, and presents the verdict and other descriptors about th
 
 ### Considerations for VirusTotal Scanning
 ----
-Because the VirusTotal public (ie. free) API imposes a limit of four requests/minute, we design a scheduling mechanism that is configured to asynchronously process up to two URL scan requests and synchronously sleep/resume when the program detects that all four requests have been temporarily depleted. We limit the Semaphore value to 2 to ensure that results are returned to the Discord chat in a timely manner. Without a Semaphore, it is possible that provided a slew of 10 URL scan requests, the program would return the results of the first sometime after five minutes.
+Because the VirusTotal public (ie. free) API imposes a limit of four requests/minute, we design a scheduling mechanism that is configured to asynchronously process up to two URL scan requests at a time using a Semaphore and synchronously halts the program for a duration of (60 - masterTime), where masterTime is Δ(time at count=4)-(time at count=0). We limit the Semaphore value to 2 to ensure that results are returned to the Discord chat in a timely manner. Without a Semaphore, it is possible that provided a slew of 10 URL scan requests, the program would return the results of the first sometime after five minutes.
 
 
 ### Warning: Sucuri SiteCheck Usage
