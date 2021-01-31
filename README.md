@@ -25,6 +25,12 @@ If performed correctly, the libraries specified in requirements.txt should be do
 
 ![alt text](https://github.com/kevinkenzhao/discord-bot/blob/main/bulk_pip_install.PNG?raw=true)
 
+Example of first run using Python 3.8.7 as seen from the client and server ends:
+
+![alt text](https://github.com/kevinkenzhao/discord-bot/blob/main/first_run_client.PNG?raw=true)
+
+![alt text](https://github.com/kevinkenzhao/discord-bot/blob/main/first_run_server.PNG?raw=true)
+
 
 ## URL Scanning
 
@@ -36,11 +42,11 @@ or ends with a TLD that does not contain any digits (eg. sampledomain.123) as a 
 Our bot gathers, parses, and presents the verdict and other descriptors about the URL(s) in question from three website scanning services: VirusTotal, Sucuri SiteCheck, and urlscan.io. We accomplish this by submitting standard POST requests to an API endpoint and parsing the returned json object or through web scraping. Because the Sucuri SiteCheck website is dynamic (i.e. the Javascript within must be executed to produce the desired HTML data), the code launches an instance of Chromium in the background for headless rendering. Unfortunately this approach can be resource-intensive if the host instance has limited computing or network resources (eg. Micro instance on AWS) and URLs are submitted in rapid succession.
 
 ### Considerations for VirusTotal Scanning
-----
+
 Because the VirusTotal public (ie. free) API imposes a limit of four requests/minute, we design a scheduling mechanism that is configured to asynchronously process up to two URL scan requests at a time using a Semaphore and synchronously halts the program for a duration of (60 - masterTime), where masterTime is Δ(time at count=4)-(time at count=0). Although we might assume that the API quota has been reset if masterTime >= 60s at time count=0, the program errs on the side of caution and halts for 20 seconds. We limit the Semaphore value to 2 to ensure that results are returned to the Discord chat in a timely manner. Without a Semaphore, it is possible that provided a slew of 10 URL scan requests, the program would return the results of the first sometime after five minutes.
 
 
-### Warning: Sucuri SiteCheck Usage
+##### Warning: Sucuri SiteCheck Usage
 
 Using the Sucuri SiteCheck (sitecheck.sucuri.net) feature in the manner described above may constitute a violation of Sucuri's Terms of Service:
 ```
