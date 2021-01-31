@@ -60,4 +60,4 @@ Example:
 1. Suppose for os.urandom(2), we produce the byte string b'S\xc5' with characters 'S' and "c5" 
 2. ord(b'S') = 83 and ord(b'\xc5') = 197.
 3. Because the byte order is big endian, we have (83 * 256^1 + 197 * 256^0 = 21445) which is the same value derived using ```int.from_bytes(b'S\xc5', byteorder="big")```
-*4. Conversely, ```int.from_bytes(b'\x00\x10', byteorder='little')``` would yield (197 * 256^1 + 83 * 256^0 = 50515).
+4. Conversely, ```int.from_bytes(b'\x00\x10', byteorder='little')``` would yield (197 * 256^1 + 83 * 256^0 = 50515).
