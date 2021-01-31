@@ -54,3 +54,10 @@ Inspirational quotes are queried from the free https://zenquotes.io/api/random e
 ## Random Number Generation
 
 Our bot leverages the os.urandom(x) function from the os library to gather 10000 pseudorandom bytes (presented in big-endian format) and convert each of them into integers via the ord() function--the resulting numeric string will be in BASE 256. The BASE 10 equivalent of the aforementioned string will be the "seed" value for our function.
+
+Example:
+
+1. Suppose for os.urandom(2), we produce the byte string b'S\xc5' with characters 'S' and "c5" 
+2. ord(b'S') = 83 and ord(b'\xc5') = 197.
+3. Because the byte order is big endian, we have (83 * 256^1 + 197 * 256^0 = 21445) which is the same value derived using ```int.from_bytes(b'S\xc5', byteorder="big")```
+*4. Conversely, ```int.from_bytes(b'\x00\x10', byteorder='little')``` would yield (197 * 256^1 + 83 * 256^0 = 50515).
