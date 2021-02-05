@@ -23,7 +23,7 @@ The recommended icon resolution is 128 pixels * 128 pixels, but Magnify.png (513
 
 The script has been verified working under Python 3.7.9 and 3.8.7, though I suspect other versions of Python 3 are compatible too. 
 
-If you have downloaded a version of Python >=3.4 via python.org, then pip is already installed. Otherwise, you will need to install pip separately. Next, download the requirements.txt file provided in this repository. Finally, run "python -m pip install -r Path\to\requirements.txt," where "python" is an environmental variable pointing to the Python executable (eg. C:\Python37\python.exe)--you may need to restart your computer after newly installing Python or creating the variable in order for changes to take effect.
+If you have downloaded a Python >=3.4 installer via python.org, you will be presented with an option to install pip. Otherwise, you will need to install pip separately. Next, download the requirements.txt file provided in this repository. Finally, run "python -m pip install -r Path\to\requirements.txt," where "python" is an environmental variable pointing to the Python executable (eg. C:\Python37\python.exe)--you may need to restart your computer after newly installing Python or creating the variable in order for changes to take effect.
 
 If performed correctly, the libraries specified in requirements.txt should be downloaded as seen below:
 
@@ -40,12 +40,12 @@ Example of first run using Python 3.8.7 as seen from the client and server ends:
 
 Our bot considers any string that starts with:
 * www.
-* http
-or ends with a TLD that does not contain any digits (eg. sampledomain.123) as a valid URL.
+* http://
+or ends with a non-numeric TLD as a valid URL (eg. sampledomain.123 would be invalid). )
 
 Our bot gathers, parses, and presents the verdict and other descriptors about the URL(s) in question from three website scanning services: VirusTotal, Sucuri SiteCheck, and urlscan.io. We accomplish this by submitting standard POST requests to an API endpoint and parsing the returned json object or through web scraping. Because the Sucuri SiteCheck website is dynamic (i.e. the Javascript within must be executed to produce the desired HTML data), the code launches an instance of Chromium in the background for headless rendering. Unfortunately this approach can be resource-intensive if the host instance has limited computing or network resources (eg. Micro instance on AWS) and URLs are submitted in rapid succession. One possible mitigation to this DoS vulnerability, is to limit the number of asynchronous Chromium instances to a manageable number like 5 with a Semaphore.
 
-Note: Sucuri SiteCheck and urlscan.io will return results on a "best effort" basis. That is to say, they may occasionally return unexpected results to valid sites. For example, querying "reddit.com" on Sucuri SiteCheck results in a "429 Too Many Requests." This often occurs when a site automatically redirects to the HTTPS version if the HTTP version is visited.
+Note: Sucuri SiteCheck and urlscan.io will return results on a "best effort" basis. That is to say, they may occasionally return unexpected results to valid sites. For example, querying "reddit.com" on Sucuri SiteCheck results in a "429 Too Many Requests." This often occurs when a site automatically redirects to its HTTPS version if the HTTP version is visited.
 
 ### Considerations for VirusTotal Scanning
 
