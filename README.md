@@ -4,6 +4,8 @@ The Discord bot was birthed from the desire for addressing occasional, miscellan
 
 By calling ```client.run('api_key')``` in the last line of the script, we have instructed the bot to run an [indefinite event loop until the logout() coroutine is called](https://discordpy.readthedocs.io/en/latest/api.html#discord.Client.run).
 
+For security reasons, the VirusTotal and Discord API keys have been redacted. If you wish to use the script, please ensure that both are supplied.
+
 ## Bot Avatar
 
 The script attempts to search for and upload an avatar to Discord during execution. By default, the script will attempt to look for "Magnify.png" in the current directory, but this can be tailored as needed.
