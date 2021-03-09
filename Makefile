@@ -1,2 +1,2 @@
 discord-test:
-	python3 Discord_URL.py
+	python Discord_URL.py
