@@ -35,13 +35,19 @@ Example of first run using Python 3.8.7 as seen from the client and server ends:
 
 ![alt text](https://github.com/kevinkenzhao/discord-bot/blob/main/first_run_server.PNG?raw=true)
 
+## Options Summary
+
+- standalone submission of valid URL (default)
+- ``-inspire``: returns an inspirational quote
+- ``-help``: returns the full list of functions and their usage
+- ``-rng x y z``: returns z random numbers between x and y
 
 ## URL Scanning
 
 Our bot considers any string that starts with:
 * www.
 * http://
-or ends with a non-numeric TLD as a valid URL (eg. sampledomain.123 would be invalid). )
+or ends with a strictly alphabetic TLD as a valid URL (eg. sampledomain.123 would be invalid).
 
 Our bot gathers, parses, and presents the verdict and other descriptors about the URL(s) in question from three website scanning services: VirusTotal, Sucuri SiteCheck, and urlscan.io. We accomplish this by submitting standard POST requests to an API endpoint and parsing the returned json object or through web scraping. Because the Sucuri SiteCheck website is dynamic (i.e. the Javascript within must be executed to produce the desired HTML data), the code launches an instance of Chromium in the background for headless rendering. Unfortunately this approach can be resource-intensive if the host instance has limited computing or network resources (eg. Micro instance on AWS) and URLs are submitted in rapid succession. One possible mitigation to this DoS vulnerability, is to limit the number of asynchronous Chromium instances to a manageable number like 5 with a Semaphore.
 
