@@ -1,3 +1,12 @@
+"""
+Specified executablePath parameter in line 714: 
+
+self._browser = await pyppeteer.launch(ignoreHTTPSErrors=not(self.verify), headless=True, executablePath="/usr/bin/chromium-browser", args=self.__browser_args)
+
+This modified requests-html.py file replaces the version which ships from the Requests-HTML library, and rectifies a "File or directory not found: /root/.local/share/pyppeteer/local-chromium/588429/chrome-linux/chrome" error.
+
+Source: https://github.com/miyakogi/pyppeteer/issues/79
+"""
 import sys
 import asyncio
 from urllib.parse import urlparse, urlunparse, urljoin
