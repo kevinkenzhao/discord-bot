@@ -1,5 +1,5 @@
 FROM python:3.8.0-alpine
-ENV PATH="/scripts:${PATH}"
+RUN mkdir /discord-bot
 COPY /volume2/discord-bot /discord-bot
 RUN pip3 install -r /discord-bot/requirements.txt
 
