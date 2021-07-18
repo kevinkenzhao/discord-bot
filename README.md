@@ -21,7 +21,9 @@ The recommended icon resolution is 128 pixels * 128 pixels, but Magnify.png (513
 
 ## Prerequisites
 
-The script has been verified working under Python 3.7.9 and 3.8.7, though I suspect other versions of Python 3 are compatible too. 
+The script has been verified working under Python 3.7.9 and 3.8.7, though I suspect other versions of Python 3 are compatible too.
+
+### Windows
 
 If you have downloaded a Python >=3.4 installer via python.org, you will be presented with an option to install pip. Otherwise, you will need to install pip separately. Next, download the requirements.txt file provided in this repository. Finally, run "python -m pip install -r Path\to\requirements.txt," where "python" is an environmental variable pointing to the Python executable (eg. C:\Python37\python.exe)--you may need to restart your computer after newly installing Python or creating the variable in order for changes to take effect.
 
@@ -34,6 +36,22 @@ Example of first run using Python 3.8.7 as seen from the client and server ends:
 ![alt text](https://github.com/kevinkenzhao/discord-bot/blob/main/first_run_client.PNG?raw=true)
 
 ![alt text](https://github.com/kevinkenzhao/discord-bot/blob/main/first_run_server.PNG?raw=true)
+
+### Docker (Alpine Linux)
+
+To allow for greatest cross-platform compatibility, we configured the bot to run within a ``python:3.8.0-alpine`` Docker image. (Note: ensure Docker is installed on the machine before proceeding.)
+
+To kickstart the deployment process, download the entire repository and extract it:
+1. ``curl https://codeload.github.com/kevinkenzhao/discord-bot/zip/refs/heads/main -O discord-bot``
+2. ``sudo apt install unzip && unzip discord-bot``
+
+Next, let us build a custom Docker image from the Dockerfile (note: this action assume the current working directory ``discord-bot``): ``docker build --no-cache -t discord-bot/url-scan:v0 .``
+
+Verify that the container has successfully spawned:
+
+![alt text](https://github.com/kevinkenzhao/discord-bot/blob/main/bot-docker-list-container.PNG?raw=true)
+
+
 
 ## Options Summary
 
