@@ -45,13 +45,20 @@ To kickstart the deployment process, download the entire repository and extract 
 1. ``curl https://codeload.github.com/kevinkenzhao/discord-bot/zip/refs/heads/main -O discord-bot``
 2. ``sudo apt install unzip && unzip discord-bot``
 
-Next, let us build a custom Docker image from the Dockerfile (note: this action assume the current working directory ``discord-bot``): ``docker build --no-cache -t discord-bot/url-scan:v0 .``
+Next, let us build a custom Docker image from the Dockerfile (note: this action assumes current working directory ``discord-bot``): 
+``docker build --no-cache -t discord-bot/url-scan:v0 .``
+
+Because we have utilized Docker on a Synology DSM NAS for this demonstration, we must create a container from the custom image we had successfully built in the previous step:
+
+![alt text](https://github.com/kevinkenzhao/discord-bot/blob/main/synology-create-container.PNG?raw=true)
 
 Verify that the container has successfully spawned:
 
 ![alt text](https://github.com/kevinkenzhao/discord-bot/blob/main/bot-docker-list-container.PNG?raw=true)
 
+To test the bot, submit a URL into the appropriate Discord channel. After the task is processed, review the activity using the command: ``docker logs [CONTAINERID]``:
 
+![alt text](https://github.com/kevinkenzhao/discord-bot/blob/main/container-stdout-log.PNG?raw=true)
 
 ## Options Summary
 
