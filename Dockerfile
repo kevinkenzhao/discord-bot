@@ -15,4 +15,6 @@ RUN pip3 install -r /discord-bot/requirements.txt
 
 RUN chmod +x /discord-bot/Discord_URL.py
 
+COPY requests_html.py /usr/local/lib/python3.8/site-packages
+
 CMD [ "python3", "/discord-bot/Discord_URL.py" ]
