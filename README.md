@@ -42,7 +42,7 @@ Example of first run using Python 3.8.7 as seen from the client and server ends:
 To allow for greatest cross-platform compatibility, we configured the bot to run within a ``python:3.8.0-alpine`` Docker image. (Note: ensure Docker is installed on the machine before proceeding.)
 
 To kickstart the deployment process, download the entire repository and extract it:
-1. ``curl https://codeload.github.com/kevinkenzhao/discord-bot/zip/refs/heads/main -O discord-bot``
+1. ``curl https://codeload.github.com/kevinkenzhao/discord-bot/zip/refs/heads/main -O discord-bot.zip``
 2. ``sudo apt install unzip && unzip discord-bot``
 
 Next, let us build a custom Docker image from the Dockerfile (note: this action assumes current working directory ``discord-bot``): 
