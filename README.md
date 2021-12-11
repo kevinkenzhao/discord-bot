@@ -107,5 +107,5 @@ Example:
 
 ## App Packaging
 
-We passed ```Magnify.png``` into the script ```icon_file_generator.py``` to generate an icon (.ico) file fit for Pyinstaller comsumption. Next, we generated an executable file of the bot by running the following Pyinstaller command: ```pyinstaller --onefile ".\Discord_URL.py" --icon ".\Magnify.png"```.
+We passed ```Magnify.png``` into the script ```icon_file_generator.py``` to generate an icon (.ico) file fit for Pyinstaller consumption. Next, we generated an executable file of the bot by running the following Pyinstaller command: ```pyinstaller --onefile ".\Discord_URL.py" --icon ".\Magnify.png"```.
 
