@@ -104,3 +104,8 @@ Example:
 2. ord(b'S') = 83 and ord(b'\xc5') = 197.
 3. Because the byte order is big endian, we have (83 * 256^1 + 197 * 256^0 = 21445) which is the same value derived using ```int.from_bytes(b'S\xc5', byteorder="big")```
 4. Conversely, ```int.from_bytes(b'\x00\x10', byteorder='little')``` would yield (197 * 256^1 + 83 * 256^0 = 50515).
+
+## App Packaging
+
+We passed ```Magnify.png``` into the script ```icon_file_generator.py``` to generate an icon (.ico) file fit for Pyinstaller comsumption. Next, we generated an executable file of the bot by running the following Pyinstaller command: ```pyinstaller --onefile ".\Discord_URL.py" --icon ".\Magnify.png"```.
+
