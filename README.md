@@ -9,7 +9,7 @@ For security reasons, the VirusTotal and Discord API keys have been redacted. If
 ## Bot Avatar
 
 The script attempts to search for and upload an avatar to Discord during execution. By default, the script will attempt to look for "Magnify.png" in the current directory, but this can be tailored as needed.
-```
+```python
 try:
 	with open('Magnify.png', 'rb') as fp:
 		pfp = fp.read()
