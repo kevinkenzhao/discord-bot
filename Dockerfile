@@ -1,4 +1,4 @@
-FROM python:3.8.0-alpine
+FROM python:3.11.7-alpine
 RUN mkdir /discord-bot
 COPY . /discord-bot
 RUN apk update && apk add g++ gcc libxml2 libxslt-dev
